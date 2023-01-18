@@ -2,6 +2,7 @@ import { Header } from "./components/Header.jsx"
 import './global.css'
 
 import styles from './App.module.css';
+import { Sidebar } from "./components/Sidebar.jsx";
 
 function App() {
 
@@ -9,7 +10,9 @@ function App() {
   <div>
   <Header/>
   <div className={styles.wrapper}>
-    <aside>de lado</aside>
+    
+    <Sidebar/>
+    
     <main>
       <h1>opa</h1>
     </main>
