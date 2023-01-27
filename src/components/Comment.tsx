@@ -4,6 +4,7 @@ import { ThumbsUp, Trash } from "phosphor-react";
 import { Avatar } from "./Avatar.js";
 import { useState } from "react";
 import { enUS } from "date-fns/locale";
+import { ConfirmAction } from "./ConfirmAction.js";
 
 interface CommentProps {
   content: string;
@@ -15,7 +16,7 @@ interface CommentProps {
 
 export function Comment({content, onDeleteComment,author, timeDate }:CommentProps) {
   const [likeCount, setLikeCount] = useState(0);
-
+  const [warnActivated, setWarnActivated] = useState(false);
   const timeDateFormatted = format(
     timeDate,
     "'Published date ' d ',' LLLL ',' HH:mm'hrs'",
@@ -30,14 +31,17 @@ export function Comment({content, onDeleteComment,author, timeDate }:CommentProp
   });
 
   function handleDeleteComment() {
-    onDeleteComment(content)
+    setWarnActivated(true)
   }
+
   function handleLikeComment() {
     setLikeCount((state) =>{
       return state + 1
     })
   }
   return (
+    <>
+    <ConfirmAction activated={warnActivated} type={"delete"} onDeleteComment={onDeleteComment} content={content}/>
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://media.licdn.com/dms/image/D4D03AQHXAtNJHVcbGw/profile-displayphoto-shrink_800_800/0/1665630311610?e=1679529600&v=beta&t=Izv36qKHlCAMmyaVrLs1g7JNQexrL3yJpODJnNqHDkw" alt="" />
 
@@ -68,5 +72,6 @@ export function Comment({content, onDeleteComment,author, timeDate }:CommentProp
         </footer>
       </div>
     </div>
+    </>
   );
 }

@@ -12,6 +12,8 @@
   --green-500: #00875f;
 
   --red-500: #f75a68;
+
+  --advertise-layer-bg: rgba(0, 0, 0, 0.75);
 }
 
 :focus {

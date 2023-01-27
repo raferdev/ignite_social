@@ -1,0 +1,58 @@
+.confirmActionWrapper.hidden {
+  visibility: hidden;
+  width: 0;
+}
+.confirmActionWrapper::before {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: none;
+  touch-action: none;
+}
+.confirmActionWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--advertise-layer-bg);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transition: visibility 2s, width 0.3s;
+}
+
+.advertiseBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-800);
+  border-radius: 8px;
+  width: 23rem;
+  height: 12rem;
+  gap: 1.5rem;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttonYes {
+  background-color: var(--gray-700);
+  width: 8rem;
+  height: 3rem;
+  font-weight: 700;
+  border-radius: 8px;
+  color: var(--red-500);
+  border: none;
+}
+.buttonNo {
+  border: none;
+  font-weight: 700;
+  background: transparent;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 8px;
+  color: var(--white);
+}
