@@ -1,5 +1,5 @@
 import { format, formatDistanceToNow } from "date-fns";
-import ptBR from "date-fns/locale/pt-BR";
+import enUS from "date-fns/esm/locale/en-US/index.js";
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 
 import { Avatar } from "./Avatar.jsx";
@@ -24,19 +24,19 @@ interface PostProps {
 }
 
 export function Post({ author, content, publishedAt }: PostProps) {
-  const [comments, setComments] = useState(["Comentario qqlr"]);
+  const [comments, setComments] = useState(["NICE POST BROH, Ah... i don't change the account. 🙃"]);
   const [newCommentText, setNewCommentText] = useState("");
+  const commentDate = new Date().getTime();
 
   const publishedDateFormatted = format(
     publishedAt,
-    "'Publicado' d 'de' LLLL 'ás' HH:mm'hrs'",
+    "'Published date ' d ',' LLLL ',' HH:mm'hrs'",
     {
-      locale: ptBR,
+      locale: enUS,
     }
   );
-
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
-    locale: ptBR,
+    locale: enUS,
     addSuffix: true,
   });
 
@@ -49,7 +49,6 @@ export function Post({ author, content, publishedAt }: PostProps) {
   }
 
   function handlerNewCommentText(event:ChangeEvent<HTMLTextAreaElement>) {
-
     event.target.setCustomValidity("");
 
     setNewCommentText(event.target.value);
@@ -64,7 +63,7 @@ export function Post({ author, content, publishedAt }: PostProps) {
   }
 
   function handleNewCommentInvalid(event:InvalidEvent<HTMLTextAreaElement>) {
-    event.target.setCustomValidity("Deixe um comentário!");
+    event.target.setCustomValidity("The comment are empty.");
   }
 
   const isNewCommentEmpty = newCommentText.length === 0;
@@ -93,25 +92,25 @@ export function Post({ author, content, publishedAt }: PostProps) {
           } else if (line.type === "link") {
             return (
               <p key={line.content}>
-                <a href="">{line.content}</a>
+                <a href={line.content}>🔗 {line.content}</a>
               </p>
             );
           }
         })}
       </div>
       <form onSubmit={handlerCreateNewContent} className={styles.commentForm}>
-        <strong>Deixe seu feedback</strong>
+        <strong>Give your feedback</strong>
         <textarea
           value={newCommentText}
           onChange={handlerNewCommentText}
           name="comment"
-          placeholder="Deixe um comentário."
+          placeholder="Leave a comment."
           onInvalid={handleNewCommentInvalid}
           required
         />
         <footer>
           <button type="submit" disabled={isNewCommentEmpty}>
-            Publicar
+            Publish
           </button>
         </footer>
       </form>
@@ -121,6 +120,8 @@ export function Post({ author, content, publishedAt }: PostProps) {
             <Comment
               key={comment}
               content={comment}
+              author={"Rafael Fernandes"}
+              timeDate={commentDate}
               onDeleteComment={deleteComment}
             />
           );

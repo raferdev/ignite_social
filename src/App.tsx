@@ -24,20 +24,20 @@ const posts:Posts[] = [
   {
     id: 1,
     author: {
-      avatarUrl: "https://github.com/raferdev.png",
+      avatarUrl: "https://media.licdn.com/dms/image/D4D03AQHXAtNJHVcbGw/profile-displayphoto-shrink_800_800/0/1665630311610?e=1679529600&v=beta&t=Izv36qKHlCAMmyaVrLs1g7JNQexrL3yJpODJnNqHDkw",
       name: "Rafael Fernandes",
       role: "Software Developer",
     },
     content: [
-      { type: "paragraph", content: "Fala galeraa 👋" },
+      { type: "paragraph", content: "Helloo guys 👋" },
       {
         type: "paragraph",
         content:
-          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+          "I'm trainning my react basis, have a nice day 🚀",
       },
       {
         type: "link",
-        content: "jane.design/doctorcare",
+        content: "https://raferdev.com",
       },
     ],
     publishedAt: new Date("2023-01-19 14:00:00"),
@@ -45,20 +45,20 @@ const posts:Posts[] = [
   {
     id: 2,
     author: {
-      avatarUrl: "https://github.com/raferdev.png",
+      avatarUrl: "https://media.licdn.com/dms/image/D4D03AQHXAtNJHVcbGw/profile-displayphoto-shrink_800_800/0/1665630311610?e=1679529600&v=beta&t=Izv36qKHlCAMmyaVrLs1g7JNQexrL3yJpODJnNqHDkw",
       name: "Rafael Fernandes",
       role: "Software Developer",
     },
     content: [
-      { type: "paragraph", content: "Fala galeraa 👋" },
+      { type: "paragraph", content: "It's me again 👋" },
       {
         type: "paragraph",
         content:
-          "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+          "Just remember to drink water please. This is the post. 🥤",
       },
       {
         type: "link",
-        content: "jane.design/doctorcare",
+        content: "https://raferdev.com",
       },
     ],
     publishedAt: new Date("2023-01-19 20:00:00"),

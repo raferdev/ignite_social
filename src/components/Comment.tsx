@@ -1,15 +1,33 @@
 import styles from "./Comment.module.css";
+import { format, formatDistanceToNow } from "date-fns";
 import { ThumbsUp, Trash } from "phosphor-react";
 import { Avatar } from "./Avatar.js";
 import { useState } from "react";
+import { enUS } from "date-fns/locale";
 
 interface CommentProps {
   content: string;
   onDeleteComment: (comment:string) => void;
+  author: string;
+  timeDate: number;
 }
 
-export function Comment({content, onDeleteComment}:CommentProps) {
+
+export function Comment({content, onDeleteComment,author, timeDate }:CommentProps) {
   const [likeCount, setLikeCount] = useState(0);
+
+  const timeDateFormatted = format(
+    timeDate,
+    "'Published date ' d ',' LLLL ',' HH:mm'hrs'",
+    {
+      locale: enUS,
+    }
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(timeDate, {
+    locale: enUS,
+    addSuffix: true,
+  });
 
   function handleDeleteComment() {
     onDeleteComment(content)
@@ -27,12 +45,12 @@ export function Comment({content, onDeleteComment}:CommentProps) {
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
-              <strong>Rafael Fernandes</strong>
-              <time title="18 de Janeiro as 16:00" dateTime="2023-01-18 16:00">
-                Cerca de 1h atrás
+              <strong>{author}</strong>
+              <time title={timeDateFormatted} dateTime={timeDateFormatted}>
+                {publishedDateRelativeToNow}
               </time>
             </div>
-            <button onMouseDown={handleDeleteComment} title="Deletar Comentário">
+            <button onMouseDown={handleDeleteComment} title="Delete comment">
               <Trash size={24} />
             </button>
           </header>
@@ -43,7 +61,7 @@ export function Comment({content, onDeleteComment}:CommentProps) {
         <footer>
           <button onClick={handleLikeComment}>
             <ThumbsUp />
-          Aplaudir <span>
+          Claps 👏<span>
             {likeCount}
           </span>
           </button>

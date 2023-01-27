@@ -29,13 +29,19 @@
 .authorAndTime {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.2rem;
 }
 
 .authorAndTime strong {
   display: block;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(gray-400);
+  color: var(--gray-100);
+}
+
+.authorAndTime time {
+  font-size: 0.875rem;
+  color: var(--gray-400);
 }
 
 .commentContent header button {
