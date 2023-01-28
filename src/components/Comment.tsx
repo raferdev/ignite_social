@@ -41,7 +41,7 @@ export function Comment({content, onDeleteComment,author, timeDate }:CommentProp
   }
   return (
     <>
-    <ConfirmAction activated={warnActivated} type={"delete"} onDeleteComment={onDeleteComment} content={content}/>
+    <ConfirmAction warnActivated={warnActivated} setWarnActivated={setWarnActivated} type={"delete"} onDeleteComment={onDeleteComment} content={content}/>
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://media.licdn.com/dms/image/D4D03AQHXAtNJHVcbGw/profile-displayphoto-shrink_800_800/0/1665630311610?e=1679529600&v=beta&t=Izv36qKHlCAMmyaVrLs1g7JNQexrL3yJpODJnNqHDkw" alt="" />
 
